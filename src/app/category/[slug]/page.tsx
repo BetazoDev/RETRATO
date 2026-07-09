@@ -42,12 +42,10 @@ export async function generateStaticParams() {
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = await params;
-  const [menuItems, siteSettings, categories, initialData] = await Promise.all([
-    getPrimaryMenu(),
-    getSiteSettings(),
-    getAllCategories(),
-    getArchivePosts(12, undefined, resolvedParams.slug),
-  ]);
+  const menuItems = await getPrimaryMenu();
+  const siteSettings = await getSiteSettings();
+  const categories = await getAllCategories();
+  const initialData = await getArchivePosts(12, undefined, resolvedParams.slug);
 
   const activeCategoryInfo = categories.find((c) => c.slug === resolvedParams.slug);
 

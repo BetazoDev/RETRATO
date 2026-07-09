@@ -43,13 +43,11 @@ export async function generateStaticParams() {
 
 export default async function TagPage({ params }: TagPageProps) {
   const resolvedParams = await params;
-  const [menuItems, siteSettings, categories, tags, initialData] = await Promise.all([
-    getPrimaryMenu(),
-    getSiteSettings(),
-    getAllCategories(),
-    getAllTags(),
-    getArchivePosts(12, undefined, undefined, resolvedParams.slug),
-  ]);
+  const menuItems = await getPrimaryMenu();
+  const siteSettings = await getSiteSettings();
+  const categories = await getAllCategories();
+  const tags = await getAllTags();
+  const initialData = await getArchivePosts(12, undefined, undefined, resolvedParams.slug);
 
   const activeTagInfo = tags.find((t) => t.slug === resolvedParams.slug);
 

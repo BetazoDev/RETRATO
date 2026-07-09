@@ -69,11 +69,9 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }: PostPageProps) {
   const resolvedParams = await params;
-  const [post, menuItems, siteSettings] = await Promise.all([
-    getPost(resolvedParams.slug),
-    getPrimaryMenu(),
-    getSiteSettings(),
-  ]);
+  const post = await getPost(resolvedParams.slug);
+  const menuItems = await getPrimaryMenu();
+  const siteSettings = await getSiteSettings();
 
   if (!post) {
     notFound();

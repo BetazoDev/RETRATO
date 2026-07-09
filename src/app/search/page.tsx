@@ -23,11 +23,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams.q || '';
   
-  const [menuItems, siteSettings, posts] = await Promise.all([
-    getPrimaryMenu(),
-    getSiteSettings(),
-    query ? searchPosts(query) : Promise.resolve([]),
-  ]);
+  const menuItems = await getPrimaryMenu();
+  const siteSettings = await getSiteSettings();
+  const posts = query ? await searchPosts(query) : [];
 
   return (
     <>

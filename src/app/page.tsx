@@ -13,13 +13,11 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [menuItems, siteSettings, postsData, categories, tags] = await Promise.all([
-    getPrimaryMenu(),
-    getSiteSettings(),
-    getHomepagePosts(),
-    getCategories(),
-    getAllTags(),
-  ]);
+  const menuItems = await getPrimaryMenu();
+  const siteSettings = await getSiteSettings();
+  const postsData = await getHomepagePosts();
+  const categories = await getCategories();
+  const tags = await getAllTags();
 
   const { latestPosts } = postsData;
 

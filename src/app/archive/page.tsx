@@ -14,12 +14,10 @@ export const metadata: Metadata = {
 export const revalidate = 120;
 
 export default async function ArchivePage() {
-  const [menuItems, siteSettings, categories, initialData] = await Promise.all([
-    getPrimaryMenu(),
-    getSiteSettings(),
-    getAllCategories(),
-    getArchivePosts(12),
-  ]);
+  const menuItems = await getPrimaryMenu();
+  const siteSettings = await getSiteSettings();
+  const categories = await getAllCategories();
+  const initialData = await getArchivePosts(12);
 
   return (
     <>
