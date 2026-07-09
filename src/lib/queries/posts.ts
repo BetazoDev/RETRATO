@@ -54,28 +54,36 @@ const GET_HOMEPAGE_POSTS = `
 `;
 
 export async function getHomepagePosts(): Promise<HomepageData> {
-  interface RawHomepageData {
-    posts: {
-      nodes: Post[];
+  try {
+    interface RawHomepageData {
+      posts: {
+        nodes: Post[];
+      };
+    }
+
+    const data = await fetchGraphQL<RawHomepageData>(GET_HOMEPAGE_POSTS, undefined, {
+      revalidate: 60,
+      tags: ['posts'],
+    });
+
+    const allPosts = data.posts.nodes || [];
+    const featured = allPosts.filter((post) => post.postExtended?.isFeatured === true);
+
+    return {
+      featuredPosts: {
+        nodes: featured,
+      },
+      latestPosts: {
+        nodes: allPosts,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching homepage posts:', error);
+    return {
+      featuredPosts: { nodes: [] },
+      latestPosts: { nodes: [] },
     };
   }
-
-  const data = await fetchGraphQL<RawHomepageData>(GET_HOMEPAGE_POSTS, undefined, {
-    revalidate: 60,
-    tags: ['posts'],
-  });
-
-  const allPosts = data.posts.nodes || [];
-  const featured = allPosts.filter((post) => post.postExtended?.isFeatured === true);
-
-  return {
-    featuredPosts: {
-      nodes: featured,
-    },
-    latestPosts: {
-      nodes: allPosts,
-    },
-  };
 }
 
 // ─── Single Post by Slug ───
@@ -166,11 +174,16 @@ const GET_POST = `
 `;
 
 export async function getPost(slug: string) {
-  const data = await fetchGraphQL<SinglePostData>(GET_POST, { slug }, {
-    revalidate: 60,
-    tags: ['posts', `post-${slug}`],
-  });
-  return data.post;
+  try {
+    const data = await fetchGraphQL<SinglePostData>(GET_POST, { slug }, {
+      revalidate: 60,
+      tags: ['posts', `post-${slug}`],
+    });
+    return data.post;
+  } catch (error) {
+    console.error(`Error fetching post ${slug}:`, error);
+    return null;
+  }
 }
 
 // ─── All Post Slugs (for generateStaticParams) ───
@@ -186,12 +199,17 @@ const GET_ALL_POST_SLUGS = `
 `;
 
 export async function getAllPostSlugs(): Promise<{ slug: string }[]> {
-  const data = await fetchGraphQL<{ posts: { nodes: { slug: string }[] } }>(
-    GET_ALL_POST_SLUGS,
-    undefined,
-    { revalidate: 300 }
-  );
-  return data.posts.nodes;
+  try {
+    const data = await fetchGraphQL<{ posts: { nodes: { slug: string }[] } }>(
+      GET_ALL_POST_SLUGS,
+      undefined,
+      { revalidate: 300 }
+    );
+    return data.posts.nodes;
+  } catch (error) {
+    console.error('Error fetching all post slugs:', error);
+    return [];
+  }
 }
 
 // ─── Archive Posts (Paginated) ───
@@ -243,11 +261,26 @@ export async function getArchivePosts(
   categorySlug?: string,
   tagSlug?: string
 ) {
-  return fetchGraphQL<ArchiveData>(
-    GET_ARCHIVE_POSTS,
-    { first, after, categorySlug, tagSlug },
-    { revalidate: 120, tags: ['posts'] }
-  );
+  try {
+    return await fetchGraphQL<ArchiveData>(
+      GET_ARCHIVE_POSTS,
+      { first, after, categorySlug, tagSlug },
+      { revalidate: 120, tags: ['posts'] }
+    );
+  } catch (error) {
+    console.error('Error fetching archive posts:', error);
+    return {
+      posts: {
+        pageInfo: {
+          hasNextPage: false,
+          hasPreviousPage: false,
+          endCursor: null,
+          startCursor: null,
+        },
+        nodes: [],
+      },
+    };
+  }
 }
 
 // ─── Search Posts ───
@@ -279,12 +312,17 @@ const SEARCH_POSTS = `
 `;
 
 export async function searchPosts(search: string) {
-  const data = await fetchGraphQL<SearchData>(
-    SEARCH_POSTS,
-    { search },
-    { revalidate: false }
-  );
-  return data.posts.nodes;
+  try {
+    const data = await fetchGraphQL<SearchData>(
+      SEARCH_POSTS,
+      { search },
+      { revalidate: false }
+    );
+    return data.posts.nodes;
+  } catch (error) {
+    console.error('Error searching posts:', error);
+    return [];
+  }
 }
 
 // ─── Related Posts (same category, excluding current) ───
@@ -332,12 +370,17 @@ export async function getRelatedPosts(
   categorySlug: string,
   excludeId: string
 ): Promise<Post[]> {
-  const data = await fetchGraphQL<{ posts: { nodes: Post[] } }>(
-    GET_RELATED_POSTS,
-    { categorySlug, excludeId },
-    { revalidate: 120 }
-  );
-  return data.posts.nodes;
+  try {
+    const data = await fetchGraphQL<{ posts: { nodes: Post[] } }>(
+      GET_RELATED_POSTS,
+      { categorySlug, excludeId },
+      { revalidate: 120 }
+    );
+    return data.posts.nodes;
+  } catch (error) {
+    console.error('Error fetching related posts:', error);
+    return [];
+  }
 }
 
 // ─── Get Categories ───
@@ -356,11 +399,16 @@ const GET_CATEGORIES = `
 `;
 
 export async function getCategories(): Promise<Category[]> {
-  const data = await fetchGraphQL<{ categories: { nodes: Category[] } }>(
-    GET_CATEGORIES,
-    undefined,
-    { revalidate: 300, tags: ['categories'] }
-  );
-  return data.categories.nodes;
+  try {
+    const data = await fetchGraphQL<{ categories: { nodes: Category[] } }>(
+      GET_CATEGORIES,
+      undefined,
+      { revalidate: 300, tags: ['categories'] }
+    );
+    return data.categories.nodes;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
 }
 

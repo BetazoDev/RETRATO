@@ -16,11 +16,16 @@ const GET_ALL_CATEGORIES = `
 `;
 
 export async function getAllCategories(): Promise<Category[]> {
-  const data = await fetchGraphQL<CategoriesData>(GET_ALL_CATEGORIES, undefined, {
-    revalidate: 300,
-    tags: ['categories'],
-  });
-  return data.categories.nodes;
+  try {
+    const data = await fetchGraphQL<CategoriesData>(GET_ALL_CATEGORIES, undefined, {
+      revalidate: 300,
+      tags: ['categories'],
+    });
+    return data.categories.nodes;
+  } catch (error) {
+    console.error('Error fetching all categories:', error);
+    return [];
+  }
 }
 
 const GET_ALL_CATEGORY_SLUGS = `
@@ -34,10 +39,15 @@ const GET_ALL_CATEGORY_SLUGS = `
 `;
 
 export async function getAllCategorySlugs(): Promise<{ slug: string }[]> {
-  const data = await fetchGraphQL<{ categories: { nodes: { slug: string }[] } }>(
-    GET_ALL_CATEGORY_SLUGS,
-    undefined,
-    { revalidate: 300 }
-  );
-  return data.categories.nodes;
+  try {
+    const data = await fetchGraphQL<{ categories: { nodes: { slug: string }[] } }>(
+      GET_ALL_CATEGORY_SLUGS,
+      undefined,
+      { revalidate: 300 }
+    );
+    return data.categories.nodes;
+  } catch (error) {
+    console.error('Error fetching all category slugs:', error);
+    return [];
+  }
 }

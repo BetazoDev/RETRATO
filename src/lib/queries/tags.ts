@@ -29,11 +29,16 @@ const GET_ALL_TAGS = `
 `;
 
 export async function getAllTags(): Promise<Tag[]> {
-  const data = await fetchGraphQL<TagsData>(GET_ALL_TAGS, undefined, {
-    revalidate: 300,
-    tags: ['tags'],
-  });
-  return data.tags.nodes;
+  try {
+    const data = await fetchGraphQL<TagsData>(GET_ALL_TAGS, undefined, {
+      revalidate: 300,
+      tags: ['tags'],
+    });
+    return data.tags.nodes;
+  } catch (error) {
+    console.error('Error fetching all tags:', error);
+    return [];
+  }
 }
 
 const GET_ALL_TAG_SLUGS = `
@@ -47,10 +52,15 @@ const GET_ALL_TAG_SLUGS = `
 `;
 
 export async function getAllTagSlugs(): Promise<{ slug: string }[]> {
-  const data = await fetchGraphQL<{ tags: { nodes: { slug: string }[] } }>(
-    GET_ALL_TAG_SLUGS,
-    undefined,
-    { revalidate: 300 }
-  );
-  return data.tags.nodes;
+  try {
+    const data = await fetchGraphQL<{ tags: { nodes: { slug: string }[] } }>(
+      GET_ALL_TAG_SLUGS,
+      undefined,
+      { revalidate: 300 }
+    );
+    return data.tags.nodes;
+  } catch (error) {
+    console.error('Error fetching all tag slugs:', error);
+    return [];
+  }
 }
