@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RETRATO Magazine - Homepage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e00000",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#230f0f",
+                        "ink-black": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderWidth: {
+                        '0.5': '0.5px',
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative
+    }
+.marquee-content {
+    display: inline-block;
+    animation: marquee 30s linear infinite
+    }
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+        } 100% {
+        transform: translateX(-50%);
+        }
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBglkBHs7jdqaSRAEguFy8VYrskDyZlNzQbvajCj4IBziFN1dZkj94B_HmurcTy6XmbBwPvXuPv7lSI1YITWD3-ra0pVn5xSH_VIWJZKFFNVNZV4_C_KKl8YdXdVQp39258kUHRaZRm5caS0tDHPKwqMYmljAHyHYvU1mui10Ev0p_0yFbdFIbsrr6DrG3end3c04Vk_dw3u_9CRt7hlDJJ9xEy3TQncAJslVngGDWjtFOJQOb04msg0UkowktJKQm61V917pb9ASg)
+    }
+.serif-title {
+    font-family: "Playfair Display", serif
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-ink-black dark:text-white transition-colors duration-300">
+<div class="grain-overlay"></div>
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b-0.5 border-ink-black/10 dark:border-white/10 px-6 lg:px-20 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">filter_frames</span>
+<h1 class="text-2xl font-black tracking-tighter uppercase leading-none">Retrato</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8 uppercase text-[10px] font-bold tracking-[0.2em]">
+<a class="hover:text-primary transition-colors" href="#">Issue 04</a>
+<a class="hover:text-primary transition-colors" href="#">Features</a>
+<a class="hover:text-primary transition-colors" href="#">Archive</a>
+<a class="hover:text-primary transition-colors" href="#">Shop</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-xl hover:text-primary">search</button>
+<button class="bg-primary text-white px-6 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all">
+                        Subscribe
+                    </button>
+</div>
+</div>
+</header>
+<!-- Hero Section (Magazine Cover Style) -->
+<main class="flex flex-col">
+<section class="relative w-full h-[85vh] flex items-center justify-center p-6 lg:p-10">
+<div class="relative w-full h-full max-w-[1400px]">
+<!-- Large Editorial Image (70% viewport) -->
+<div class="absolute inset-0 w-full h-full bg-center bg-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700" data-alt="Cinematic high grain black and white urban street photography portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBT4d5tFp4rPjWOFJXVRAk82t5DypdXSr4U3mHoh8oU0vLbszV8o-7gpdSuQPDnGRbnpzHfGtMJe-DZEH8jrEI80fPwfz04_GWi4aTkFQyzLEy6HWhviDfqqDgoDAf_QDh8TrToCkhs4_9MeBvbuN9ubQq4Vu8GIJCNk-bs0ozlllTq0kmm7n5hAPku--9cF9W5AGQ8KHYYq061Rs83xudIlGhP8VE1p0MH6H9D0UK1mvBo-btw6lL50wLSrYSWyLEtVGelyFGIar4");'>
+</div>
+<!-- Overlapping Headline -->
+<div class="absolute -bottom-10 left-0 lg:-left-12 z-10 max-w-4xl">
+<h1 class="serif-title text-7xl md:text-9xl lg:text-[11rem] leading-[0.85] text-white mix-blend-difference drop-shadow-2xl">
+                            The Grain<br/>of the City
+                        </h1>
+</div>
+<!-- Metadata Labels -->
+<div class="absolute top-8 right-8 text-right flex flex-col gap-1 items-end uppercase">
+<div class="bg-primary text-white px-3 py-1 text-[10px] font-bold tracking-widest">Issue No. 04</div>
+<div class="text-[10px] font-bold tracking-widest mt-2 bg-white/90 dark:bg-black/90 p-1 px-2">Winter 2024 Collection</div>
+</div>
+</div>
+</section>
+<!-- Editorial Ticker (Marquee) -->
+<section class="mt-16 border-y-0.5 border-ink-black dark:border-white py-4 overflow-hidden bg-white dark:bg-black">
+<div class="marquee-container">
+<div class="marquee-content flex items-center gap-12 text-primary font-black uppercase tracking-[0.3em] text-sm italic">
+<span>New Issue Out Now</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Exhibition: London 2024</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Interview with A. Martinez</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Perspectives on Light</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Analog Revival Trends</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<!-- Repeated for loop -->
+<span>New Issue Out Now</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Exhibition: London 2024</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Interview with A. Martinez</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+<span>Perspectives on Light</span>
+<span class="text-ink-black dark:text-white opacity-20">•</span>
+</div>
+</div>
+</section>
+<!-- Asymmetric Masonry Grid -->
+<section class="max-w-[1400px] mx-auto w-full px-6 lg:px-10 py-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<!-- Vertical Card (Article 1) -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<div class="w-full aspect-[3/4] bg-center bg-cover bg-gray-200" data-alt="Minimalist vertical portrait with harsh lighting and shadows" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCcJ-P__9G6YzxZbYzlu__bj0W_Uk3XN2hgeNu9LK-wrdri6i0x1j5zG5Qt2y9pULHkJ55kAdP-eXQhEH7X018Q_kd4Jzce0dOUWebWE8P4pxMKUltySeQDLPCjzQsM23Gftlx64DCAm8nZcMwsythJrh8iGJ-AVTITBFMduavxRBGQP_PWhkxp92yI3Df3eJsZMKCIzW_tG4ngINuScOh0ByORTE7p1WIshR8ENJuw5qCI7GUl-DIhNog69nYr7vGUXFzBIPXWeo");'></div>
+<div class="flex flex-col gap-2">
+<span class="text-primary text-[10px] font-black uppercase tracking-widest">Photography / Archive</span>
+<h3 class="serif-title text-3xl leading-tight hover:italic cursor-pointer transition-all">The Last Roll: Kodachrome's Legacy</h3>
+<p class="text-sm opacity-60 max-w-xs leading-relaxed mt-2 font-medium">A journey through the final processing plants of the world's most iconic color film.</p>
+<div class="flex items-center gap-4 mt-4 text-[10px] font-bold opacity-40 uppercase tracking-tighter">
+<span>By Sarah Jenkins</span>
+<span class="size-1 bg-ink-black dark:bg-white rounded-full"></span>
+<span>8 Min Read</span>
+</div>
+</div>
+</div>
+<!-- Text-only Card (Article 2) -->
+<div class="md:col-span-4 flex flex-col justify-center border-x-0.5 border-ink-black/10 dark:border-white/10 px-10 bg-white dark:bg-black/20 p-8">
+<span class="text-primary text-[10px] font-black uppercase tracking-widest mb-6">Editorial Note</span>
+<h2 class="serif-title text-4xl leading-[1.1] mb-6 italic">"The lens does not simply capture; it interprets the silence between moments."</h2>
+<div class="w-12 h-0.5 bg-primary mb-6"></div>
+<h3 class="text-xl font-bold leading-tight">Why Minimalism is the Future of Visual Storytelling</h3>
+<p class="text-sm opacity-60 mt-4 leading-relaxed font-medium">In an age of visual saturation, the absence of detail becomes the most powerful narrative tool we possess.</p>
+<button class="mt-8 text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 hover:text-primary transition-colors">
+                            Read Essay <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Vertical Card (Article 3) -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<div class="w-full aspect-[3/4] bg-center bg-cover bg-gray-200" data-alt="Experimental abstract light painting photography" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7f4xQNPxgcTY48APzNHoURtP-xwUYFUw1jKif9VhHtmpp4erGz4iRMViQ0wkzxEa9HAjBSJ9XGjMAhSbsS6oY1nEntboObGzqGL-67dZt4yF9xIOrL5Ry41W157y3_WzAkDIPZ_uJgJbUEDVL26BEp8CZrBgNqHWbWVGh0HvZfspEbA9e64lK8f4Fmjf2folW5ZhAOBirA349dY8saqBTkaZnuj4DXa3-yXTiRikwvtOrpnWZGMhjvJT-bWQCd2mmnmho-9olXRQ");'></div>
+<div class="flex flex-col gap-2">
+<span class="text-primary text-[10px] font-black uppercase tracking-widest">Art Theory</span>
+<h3 class="serif-title text-3xl leading-tight hover:italic cursor-pointer transition-all">Abstract Realism in Modern Portraiture</h3>
+<p class="text-sm opacity-60 max-w-xs leading-relaxed mt-2 font-medium">Deconstructing the human form through motion blur and long exposures.</p>
+<div class="flex items-center gap-4 mt-4 text-[10px] font-bold opacity-40 uppercase tracking-tighter">
+<span>By Marcus Thorne</span>
+<span class="size-1 bg-ink-black dark:bg-white rounded-full"></span>
+<span>12 Min Read</span>
+</div>
+</div>
+</div>
+<!-- Feature Card (Article 4 - Spans 8 cols) -->
+<div class="md:col-span-8 group cursor-pointer relative overflow-hidden h-[500px]">
+<div class="absolute inset-0 bg-center bg-cover scale-100 group-hover:scale-105 transition-transform duration-1000" data-alt="Wide cinematic shot of a brutalist building facade at dusk" style='background-image: linear-gradient(to top, rgba(18,18,18,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBh4WOpgDS5jhQKaCYPWTMLo-96BucbAd612rwEGXPeGxM-iqr0ociKYrYDiEBph3tQcqvX9a_JgEjU5aB_Q_I1IJdQJiLAGvB2MQTx1T45xFTKhdPrstYh_GMqSub2Fgcn8_JIRZETXQL5XOQ6-ywBZvJEDDCQtIMmcxeFPFJjNKZ6jK36mBXoWmNHHvvQbZGc8TgDvGZumvWNntjfPUXyGw6VARBCyKwWtgsiJkFGcKejYq1BPnBOltX-I5xMhhu0AcJQwOnbGWo");'></div>
+<div class="absolute bottom-10 left-10 text-white max-w-xl">
+<span class="bg-primary px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Special Feature</span>
+<h3 class="serif-title text-5xl leading-none mb-4">Brutalism &amp; Light: The Concrete Poetry</h3>
+<p class="text-lg opacity-80 font-medium">Exploring the interplay between shadows and stark architectural forms in post-war European cities.</p>
+</div>
+</div>
+<!-- Small Vertical Card (Article 5) -->
+<div class="md:col-span-4 flex flex-col gap-4 border-t-0.5 border-ink-black/10 dark:border-white/10 pt-6">
+<div class="flex flex-col gap-2">
+<span class="text-primary text-[10px] font-black uppercase tracking-widest">Interview</span>
+<h3 class="serif-title text-2xl leading-tight">The Silent Lens: 20 Minutes with Hiroshi</h3>
+<p class="text-xs opacity-60 leading-relaxed font-medium">A rare conversation on the philosophy of time and the stillness of the Pacific Ocean.</p>
+<button class="mt-4 bg-ink-black text-white dark:bg-white dark:text-black py-3 px-6 text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                                Open Article
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t-0.5 border-ink-black dark:border-white py-20 px-6 lg:px-20 bg-white dark:bg-black">
+<div class="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12">
+<div class="col-span-2">
+<h2 class="text-3xl font-black tracking-tighter uppercase mb-6">Retrato</h2>
+<p class="text-sm opacity-50 font-medium leading-relaxed max-w-xs">
+                        An independent digital and print publication exploring the intersection of film photography, urban culture, and minimalist visual theory. Based in Berlin.
+                    </p>
+</div>
+<div>
+<h4 class="text-[10px] font-black uppercase tracking-widest mb-6 opacity-40">Sections</h4>
+<ul class="flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="#">Portfolios</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Technical</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Essays</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Interviews</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[10px] font-black uppercase tracking-widest mb-6 opacity-40">Magazine</h4>
+<ul class="flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="#">Current Issue</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Stockists</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Submissions</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+</ul>
+</div>
+<div class="col-span-2">
+<h4 class="text-[10px] font-black uppercase tracking-widest mb-6 opacity-40">Newsletter</h4>
+<div class="flex gap-2">
+<input class="flex-1 bg-transparent border-b-0.5 border-ink-black dark:border-white py-2 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Email address" type="email"/>
+<button class="material-symbols-outlined hover:text-primary transition-colors">arrow_forward</button>
+</div>
+<div class="mt-8 flex gap-6 opacity-50">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">camera</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">movie</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">share</span>
+</div>
+</div>
+</div>
+<div class="max-w-[1400px] mx-auto mt-20 pt-10 border-t-0.5 border-ink-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-[10px] font-bold opacity-30 uppercase tracking-[0.2em]">© 2024 Retrato Magazine. All Rights Reserved.</p>
+<div class="flex gap-8 text-[10px] font-bold opacity-30 uppercase tracking-[0.2em]">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Use</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RETRATO — The Ethics of the Lens</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e00000",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#230f0f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .progress-line-container {
+            position: fixed;
+            left: 2rem;
+            top: 20%;
+            bottom: 20%;
+            width: 2px;
+            background-color: rgba(224, 0, 0, 0.1);
+        }
+        .progress-line-fill {
+            width: 100%;
+            height: 45%; /* Mock scroll progress */
+            background-color: #e00000;
+        }
+        .text-column {
+            max-width: 700px;
+        }
+        .film-negative-grain {
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 4px 4px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1d0c0c] dark:text-[#f8f5f5] antialiased">
+<!-- Reading Progress Vertical (Swiss Design Touch) -->
+<div class="hidden lg:block progress-line-container">
+<div class="progress-line-fill"></div>
+<div class="mt-4 text-primary text-[10px] font-bold uppercase tracking-widest vertical-rl rotate-180" style="writing-mode: vertical-rl;">Reading</div>
+</div>
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-solid border-black/5 dark:border-white/5 px-6 lg:px-12 py-4">
+<div class="max-w-[1400px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="size-6" fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-black tracking-tighter uppercase">RETRATO</h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Issues</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Gallery</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">Archive</a>
+<button class="bg-primary text-white px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] rounded-sm">Subscribe</button>
+</nav>
+<div class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<main class="w-full">
+<!-- Hero Section - Full Bleed -->
+<section class="w-full h-[90vh] relative overflow-hidden bg-black">
+<div class="absolute inset-0 bg-cover bg-center opacity-90" data-alt="Atmospheric black and white urban street photography" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZUZif_pqY74kPkF3gjzBx5DKOcAJa7MqcDOJ03_NOiHb-mHJN5SDyMS6QUhVQDs2rZx0EW3_l_28EaOeZoOhBWBOU_MslfjB3y0VsiTU75dvCxCbpLXdS7jX8efmrypurraVdmf91CAUYuot_5snkOAvn_raUUEpBZzXQ-tbxwWrehI_jEmp7-K9b2T15smJmboxqEhOvK88vWa275LsxpGlb6iQ6u75hMaD8T1QVpoU3G23IFR1PpbEeeGq6BSBOKa_lYc-MF00');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-16 left-0 w-full px-6 lg:px-24">
+<div class="max-w-[1400px] mx-auto">
+<span class="inline-block bg-primary text-white text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 mb-6">Visual Culture</span>
+<h1 class="text-white text-5xl lg:text-8xl font-black tracking-tight leading-[0.9] max-w-4xl">
+                        The Ethics of the Lens in a Post-Digital Age
+                    </h1>
+</div>
+</div>
+</section>
+<!-- Article Content -->
+<article class="relative py-24 px-6">
+<div class="text-column mx-auto">
+<!-- Meta Info -->
+<div class="flex flex-col gap-1 pb-16 border-b border-black/10 dark:border-white/10 mb-16">
+<p class="text-primary font-bold text-sm uppercase tracking-widest">Essay by Elena Rossi</p>
+<p class="opacity-50 text-xs font-medium uppercase tracking-widest">October 24, 2023 — 12 min read</p>
+</div>
+<!-- Body Text -->
+<div class="space-y-8 text-lg lg:text-xl leading-relaxed font-light">
+<p class="first-letter:text-7xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left">
+                        In the contemporary landscape of visual saturation, the role of the photographer has shifted from a mere witness to an architect of reality. The transition from chemical film to silicon sensors didn't just change the medium; it fundamentally altered the contract between the viewer and the viewed. 
+                    </p>
+<p>
+                        The Swiss design philosophy, characterized by its grid systems and focus on objectivity, offers a unique framework to analyze this shift. When we look through the viewfinder today, we aren't just capturing light; we are processing data. This "computational gaze" challenges our traditional understanding of photographic truth.
+                    </p>
+<!-- Pull Quote -->
+<blockquote class="py-12 my-12 border-y-2 border-primary">
+<p class="text-3xl lg:text-4xl font-black tracking-tight leading-tight italic">
+                            "The photograph is not a reflection of reality, but a construction of a specific intention."
+                        </p>
+</blockquote>
+<p>
+                        As we navigate through the noise of AI-generated aesthetics and hyper-real enhancements, the ethical responsibility of the documentarian becomes paramount. What does it mean to be 'authentic' when the very pixels we capture can be rearranged by an algorithm in real-time? 
+                    </p>
+<p>
+                        The tactile nature of film once provided a physical anchor to the moment. A negative was a physical artifact of light hitting silver halide. In the post-digital age, that physical anchor has vanished, replaced by ephemeral strings of code. 
+                    </p>
+</div>
+<!-- Inline Secondary Image -->
+<div class="my-20 -mx-4 lg:-mx-24">
+<div class="w-full aspect-[16/9] bg-cover bg-center bg-gray-200" data-alt="Close up of a vintage analog camera lens" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxVmvesSbHT_KPEhuS50ePSpwEQ4uzq7X3XtxzdTZyCsynsItPBqeWDPGXpKynOopRGDA11hBUnlqdEOxf2f9GzTYr6-MLZNt1_0DE1WpuDMJwSrI5zF3kW1tlTrz4d-61uhMVA6gxUzInRRdwMS6xaDOXcY48Fgp8ZUKBLyZU1mQYITw5-5DMloVvdrxNgCdH2qyB6lLtm3PYRew37Zi6GBdezHn2XW8OcrTnrhAPQGyZvW61H5cucqJNglrVSTyAd8mchCdVRSQ');"></div>
+<p class="mt-4 text-[11px] uppercase tracking-widest opacity-40 text-center">Fig 01. The mechanical precision of the 20th century lens.</p>
+</div>
+<div class="space-y-8 text-lg lg:text-xl leading-relaxed font-light">
+<p>
+                        Ultimately, the ethics of the lens lies in the photographer's ability to maintain a dialogue with the subject that transcends the technology. Whether using a Leica M6 or the latest mirrorless system, the intent remains the primary tool of the craft.
+                    </p>
+</div>
+<!-- Technical Sheet (Film Negative Style) -->
+<div class="mt-32 relative">
+<div class="bg-[#111] text-white p-8 lg:p-12 rounded-lg relative overflow-hidden group">
+<div class="absolute inset-0 film-negative-grain pointer-events-none"></div>
+<!-- Perforated Edge Aesthetic -->
+<div class="absolute left-0 top-0 bottom-0 w-4 flex flex-col justify-around py-4 opacity-20">
+<div class="w-2 h-3 bg-white/30 rounded-sm mx-auto"></div>
+<div class="w-2 h-3 bg-white/30 rounded-sm mx-auto"></div>
+<div class="w-2 h-3 bg-white/30 rounded-sm mx-auto"></div>
+<div class="w-2 h-3 bg-white/30 rounded-sm mx-auto"></div>
+</div>
+<h3 class="text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-8">Technical Sheet / Metadata</h3>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="space-y-1">
+<p class="text-white/40 text-[9px] uppercase tracking-widest font-bold">Camera</p>
+<p class="text-sm font-mono tracking-tight">Leica M6 Classic</p>
+</div>
+<div class="space-y-1">
+<p class="text-white/40 text-[9px] uppercase tracking-widest font-bold">Lens</p>
+<p class="text-sm font-mono tracking-tight">Summicron 35mm f/2</p>
+</div>
+<div class="space-y-1">
+<p class="text-white/40 text-[9px] uppercase tracking-widest font-bold">Film Stock</p>
+<p class="text-sm font-mono tracking-tight">Kodak Tri-X 400</p>
+</div>
+<div class="space-y-1">
+<p class="text-white/40 text-[9px] uppercase tracking-widest font-bold">Year</p>
+<p class="text-sm font-mono tracking-tight">2023</p>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<p class="text-xs uppercase tracking-widest font-bold" data-location="Berlin, Germany">Berlin, Germany</p>
+</div>
+<div class="flex gap-4">
+<div class="size-6 border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">share</span>
+</div>
+<div class="size-6 border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">download</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Footer / Related -->
+<footer class="bg-white dark:bg-black py-20 px-6 mt-20 border-t border-black/5 dark:border-white/5">
+<div class="max-w-[1400px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end gap-12">
+<div class="max-w-md">
+<h4 class="text-xs font-black uppercase tracking-[0.3em] mb-8 text-primary">Up Next</h4>
+<a class="group block" href="#">
+<h2 class="text-3xl lg:text-5xl font-black tracking-tighter leading-none group-hover:text-primary transition-colors">The Architectural Silence of Tadao Ando</h2>
+<p class="mt-4 opacity-50 text-sm uppercase tracking-widest">Read Article — 15 min</p>
+</a>
+</div>
+<div class="flex flex-col items-end gap-4">
+<h2 class="text-4xl font-black tracking-tighter uppercase leading-none">RETRATO</h2>
+<p class="text-[10px] uppercase tracking-widest opacity-40 text-right">© 2024 Retrato Magazine. All rights reserved.<br/>Switzerland / International.</p>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
