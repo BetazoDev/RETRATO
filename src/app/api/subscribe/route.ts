@@ -33,6 +33,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Trigger n8n welcome/drip email workflow asynchronously (non-blocking)
+    fetch('https://n8n.diabolicalservices.tech/webhook/retrato-subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email }),
+    }).catch((err) => console.error('Failed to trigger n8n subscribe:', err));
+
     return NextResponse.json(data);
   } catch (error) {
     console.error('Subscribe API error:', error);
