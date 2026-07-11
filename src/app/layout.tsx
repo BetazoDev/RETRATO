@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'An independent digital publication exploring the intersection of film photography, urban culture, and minimalist visual theory.',
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://retrato.halonso.digital'
   ),
   openGraph: {
     type: 'website',

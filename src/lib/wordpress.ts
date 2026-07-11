@@ -4,7 +4,7 @@
  */
 
 const GRAPHQL_ENDPOINT =
-  process.env.WORDPRESS_GRAPHQL_ENDPOINT || 'http://retrato.local/graphql';
+  process.env.WORDPRESS_GRAPHQL_ENDPOINT || 'https://retratowp.halonso.digital/graphql';
 
 interface GraphQLResponse<T> {
   data: T;

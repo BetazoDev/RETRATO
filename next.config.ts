@@ -4,18 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'retrato.local',
-        pathname: '/**',
-      },
-      {
         protocol: 'https',
         hostname: 'retratowp.halonso.digital',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
         pathname: '/**',
       },
       {
