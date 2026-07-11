@@ -1952,3 +1952,28 @@ html.custom-cursor-active .clickable {
   border-color: var(--color-ink);
 }
 
+/* ─── Mobile Responsive Image Optimization ─── */
+@media (max-width: 767px) {
+  /* Prevent vertical card images from getting too tall and heavily cropped on sides */
+  .grid-vertical-image {
+    aspect-ratio: 16 / 10 !important;
+  }
+  
+  /* Prevent full-width feature grid cards from being too narrow and tall */
+  .grid-feature-card {
+    height: 320px !important;
+  }
+  
+  /* Reduce post hero image crop on mobile viewports */
+  .post-hero {
+    height: 60vh !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  /* Reduce homepage cover hero image crop on mobile viewports */
+  .hero-sec {
+    height: 60vh !important;
+  }
+}
+
+

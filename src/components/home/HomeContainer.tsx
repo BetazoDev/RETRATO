@@ -104,6 +104,9 @@ export default function HomeContainer({
   // Filter only active sections
   const activeSections = parsedSections.filter((s) => s.active);
 
+  // Live excerpt limit
+  const excerptLimit = Number(liveSettings.retrato_card_excerpt_limit ?? 120);
+
   // Homepage Cover Hero Post (first featured post, or fallback to first latest post)
   const heroPost = latestPosts.find((p) => p.postExtended?.isFeatured) || latestPosts[0];
   const tickerTitles = latestPosts.slice(0, 8).map((p) => p.title);
@@ -121,7 +124,7 @@ export default function HomeContainer({
         <EditorialTicker titles={tickerTitles} />
 
         {/* Main Asymmetric Masonry Grid */}
-        <ArticleGrid posts={latestPosts.slice(0, 5)} />
+        <ArticleGrid posts={latestPosts.slice(0, 5)} excerptLimit={excerptLimit} />
 
         {/* Dynamic Customizer-configured Category & Tag Sections */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -158,6 +161,7 @@ export default function HomeContainer({
                 limit={globalLimit}
                 showFeatured={section.show_featured}
                 featuredPostSlug={section.featured_post || undefined}
+                excerptLimit={excerptLimit}
               />
             );
           })}

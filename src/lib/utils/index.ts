@@ -40,8 +40,24 @@ export function stripHtml(html: string): string {
  * Truncate text to a maximum length, adding ellipsis.
  */
 export function truncate(text: string, maxLength: number): string {
+  if (maxLength <= 0) return '';
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength).replace(/\s+\S*$/, '') + '…';
+}
+
+/**
+ * Retrieve the excerpt character limit from customizer settings string.
+ */
+export function getExcerptLimit(homepageSettings: string | undefined): number {
+  if (!homepageSettings) return 120;
+  try {
+    const parsed = JSON.parse(homepageSettings);
+    if (parsed.retrato_card_excerpt_limit !== undefined) {
+      const val = Number(parsed.retrato_card_excerpt_limit);
+      return isNaN(val) ? 120 : val;
+    }
+  } catch (e) {}
+  return 120;
 }
 
 /**

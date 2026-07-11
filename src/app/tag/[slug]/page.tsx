@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import ArchiveContainer from '@/components/archive/ArchiveContainer';
 import { getPrimaryMenu, getSiteSettings } from '@/lib/queries/menus';
 import { getArchivePosts } from '@/lib/queries/posts';
+import { getExcerptLimit } from '@/lib/utils';
 import { getAllCategories } from '@/lib/queries/categories';
 import { getAllTags, getAllTagSlugs } from '@/lib/queries/tags';
 
@@ -48,6 +49,7 @@ export default async function TagPage({ params }: TagPageProps) {
   const categories = await getAllCategories();
   const tags = await getAllTags();
   const initialData = await getArchivePosts(12, undefined, undefined, resolvedParams.slug);
+  const excerptLimit = getExcerptLimit(siteSettings.homepageSettings);
 
   const activeTagInfo = tags.find((t) => t.slug === resolvedParams.slug);
 
@@ -72,6 +74,7 @@ export default async function TagPage({ params }: TagPageProps) {
           tagSlug={resolvedParams.slug}
           categoryName={`Tag: ${activeTagInfo.name}`}
           categoryDescription={activeTagInfo.description || `Articles tagged with ${activeTagInfo.name}`}
+          excerptLimit={excerptLimit}
         />
       </main>
 

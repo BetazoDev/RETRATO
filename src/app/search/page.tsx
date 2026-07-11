@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer';
 import ArticleCard from '@/components/shared/ArticleCard';
 import { getPrimaryMenu, getSiteSettings } from '@/lib/queries/menus';
 import { searchPosts } from '@/lib/queries/posts';
+import { getExcerptLimit } from '@/lib/utils';
 
 interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
@@ -26,6 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const menuItems = await getPrimaryMenu();
   const siteSettings = await getSiteSettings();
   const posts = query ? await searchPosts(query) : [];
+  const excerptLimit = getExcerptLimit(siteSettings.homepageSettings);
 
   return (
     <>
@@ -62,7 +64,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {posts.length > 0 && (
           <div className="arc-post-grid">
             {posts.map((post) => (
-              <ArticleCard key={post.id} post={post} />
+              <ArticleCard key={post.id} post={post} excerptLimit={excerptLimit} />
             ))}
           </div>
         )}

@@ -8,6 +8,7 @@ export interface CustomizerSettings {
   retrato_instagram_url?: string;
   retrato_twitter_url?: string;
   retrato_telegram_url?: string;
+  retrato_card_excerpt_limit?: number;
   [key: string]: any;
 }
 

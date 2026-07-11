@@ -16,6 +16,7 @@ interface ArchiveContainerProps {
   categoryName?: string;
   categoryDescription?: string;
   tagSlug?: string;
+  excerptLimit?: number;
 }
 
 export default function ArchiveContainer({
@@ -26,6 +27,7 @@ export default function ArchiveContainer({
   categoryName,
   categoryDescription,
   tagSlug,
+  excerptLimit,
 }: ArchiveContainerProps) {
   const [activeCategory, setActiveCategory] = useState(categorySlug);
   const [currentView, setCurrentView] = useState<'grid' | 'list'>('grid');
@@ -144,7 +146,7 @@ export default function ArchiveContainer({
       {/* Loading Overlay */}
       <div style={{ position: 'relative', minHeight: '300px', opacity: isLoading ? 0.5 : 1, transition: 'opacity var(--transition-fast)' }}>
         {currentView === 'grid' ? (
-          <PostGrid posts={posts} />
+          <PostGrid posts={posts} excerptLimit={excerptLimit} />
         ) : (
           <PostListView posts={posts} />
         )}

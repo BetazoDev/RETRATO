@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import type { Post } from '@/lib/types';
-import { formatDate, stripHtml } from '@/lib/utils';
+import { formatDate, stripHtml, truncate } from '@/lib/utils';
 
 interface ArticleGridProps {
   posts: Post[];
+  excerptLimit?: number;
 }
 
-export default function ArticleGrid({ posts }: ArticleGridProps) {
+export default function ArticleGrid({ posts, excerptLimit = 120 }: ArticleGridProps) {
   if (posts.length === 0) return null;
 
   const [post1, post2, post3, post4, post5] = posts;
@@ -33,7 +34,7 @@ export default function ArticleGrid({ posts }: ArticleGridProps) {
                 <h3 className="grid-card-title">{post1.title}</h3>
                 {post1.excerpt && (
                   <p className="grid-card-excerpt">
-                    {stripHtml(post1.excerpt)}
+                    {truncate(stripHtml(post1.excerpt), excerptLimit)}
                   </p>
                 )}
                 <div className="grid-card-meta">
@@ -65,7 +66,7 @@ export default function ArticleGrid({ posts }: ArticleGridProps) {
             <h3 className="grid-editorial-title">{post2.title}</h3>
             {post2.excerpt && (
               <p className="grid-card-excerpt">
-                {stripHtml(post2.excerpt)}
+                {truncate(stripHtml(post2.excerpt), excerptLimit)}
               </p>
             )}
             <Link href={`/post/${post2.slug}`} className="grid-read-link">
@@ -93,7 +94,7 @@ export default function ArticleGrid({ posts }: ArticleGridProps) {
                 <h3 className="grid-card-title">{post3.title}</h3>
                 {post3.excerpt && (
                   <p className="grid-card-excerpt">
-                    {stripHtml(post3.excerpt)}
+                    {truncate(stripHtml(post3.excerpt), excerptLimit)}
                   </p>
                 )}
                 <div className="grid-card-meta">
@@ -125,7 +126,7 @@ export default function ArticleGrid({ posts }: ArticleGridProps) {
                 <h3 className="grid-feature-title">{post4.title}</h3>
                 {post4.excerpt && (
                   <p className="grid-feature-excerpt">
-                    {stripHtml(post4.excerpt)}
+                    {truncate(stripHtml(post4.excerpt), excerptLimit)}
                   </p>
                 )}
               </div>
@@ -142,7 +143,7 @@ export default function ArticleGrid({ posts }: ArticleGridProps) {
             <h3 className="grid-small-title">{post5.title}</h3>
             {post5.excerpt && (
               <p className="grid-small-excerpt">
-                {stripHtml(post5.excerpt)}
+                {truncate(stripHtml(post5.excerpt), excerptLimit)}
               </p>
             )}
             <Link href={`/post/${post5.slug}`} className="btn-secondary grid-open-button">

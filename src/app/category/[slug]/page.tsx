@@ -6,6 +6,7 @@ import ArchiveContainer from '@/components/archive/ArchiveContainer';
 import { getPrimaryMenu, getSiteSettings } from '@/lib/queries/menus';
 import { getArchivePosts } from '@/lib/queries/posts';
 import { getAllCategories, getAllCategorySlugs } from '@/lib/queries/categories';
+import { getExcerptLimit } from '@/lib/utils';
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -46,6 +47,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const siteSettings = await getSiteSettings();
   const categories = await getAllCategories();
   const initialData = await getArchivePosts(12, undefined, resolvedParams.slug);
+  const excerptLimit = getExcerptLimit(siteSettings.homepageSettings);
 
   const activeCategoryInfo = categories.find((c) => c.slug === resolvedParams.slug);
 
@@ -69,6 +71,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           categorySlug={resolvedParams.slug}
           categoryName={activeCategoryInfo.name}
           categoryDescription={activeCategoryInfo.description}
+          excerptLimit={excerptLimit}
         />
       </main>
 

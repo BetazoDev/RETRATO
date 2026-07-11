@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Post } from '@/lib/types';
-import { stripHtml } from '@/lib/utils';
+import { stripHtml, truncate } from '@/lib/utils';
 import ArticleCard from '../shared/ArticleCard';
 
 interface CategorySectionProps {
@@ -11,6 +11,7 @@ interface CategorySectionProps {
   limit?: number;
   showFeatured?: boolean;
   featuredPostSlug?: string;
+  excerptLimit?: number;
 }
 
 export default function CategorySection({
@@ -21,6 +22,7 @@ export default function CategorySection({
   limit = 6,
   showFeatured = false,
   featuredPostSlug,
+  excerptLimit = 120,
 }: CategorySectionProps) {
   if (posts.length === 0) return null;
 
@@ -78,7 +80,7 @@ export default function CategorySection({
               <h4 className="cat-featured-title">{featuredPost.title}</h4>
               {featuredPost.excerpt && (
                 <p className="cat-featured-excerpt">
-                  {stripHtml(featuredPost.excerpt)}
+                  {truncate(stripHtml(featuredPost.excerpt), excerptLimit)}
                 </p>
               )}
             </div>
@@ -88,7 +90,7 @@ export default function CategorySection({
           {listPosts.length > 0 && (
             <div className="cat-standard-grid">
               {listPosts.map((post) => (
-                <ArticleCard key={post.id} post={post} showBadge={false} />
+                <ArticleCard key={post.id} post={post} showBadge={false} excerptLimit={excerptLimit} />
               ))}
             </div>
           )}
@@ -97,7 +99,7 @@ export default function CategorySection({
         /* Standard 3-column Grid Layout */
         <div className="cat-standard-grid">
           {listPosts.map((post) => (
-            <ArticleCard key={post.id} post={post} showBadge={false} />
+            <ArticleCard key={post.id} post={post} showBadge={false} excerptLimit={excerptLimit} />
           ))}
         </div>
       )}

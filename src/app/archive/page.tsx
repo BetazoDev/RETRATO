@@ -5,6 +5,7 @@ import ArchiveContainer from '@/components/archive/ArchiveContainer';
 import { getPrimaryMenu, getSiteSettings } from '@/lib/queries/menus';
 import { getArchivePosts } from '@/lib/queries/posts';
 import { getAllCategories } from '@/lib/queries/categories';
+import { getExcerptLimit } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Archive — RETRATO',
@@ -18,6 +19,7 @@ export default async function ArchivePage() {
   const siteSettings = await getSiteSettings();
   const categories = await getAllCategories();
   const initialData = await getArchivePosts(12);
+  const excerptLimit = getExcerptLimit(siteSettings.homepageSettings);
 
   return (
     <>
@@ -32,6 +34,7 @@ export default async function ArchivePage() {
           initialPosts={initialData.posts.nodes}
           initialPageInfo={initialData.posts.pageInfo}
           categories={categories}
+          excerptLimit={excerptLimit}
         />
       </main>
 
