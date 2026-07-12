@@ -1959,9 +1959,97 @@ html.custom-cursor-active .clickable {
     aspect-ratio: 16 / 10 !important;
   }
   
-  /* Prevent full-width feature grid cards from being too narrow and tall */
+  /* Stack full-width feature grid cards vertically on mobile to prevent text clipping */
   .grid-feature-card {
-    height: 320px !important;
+    height: auto !important;
+    overflow: visible !important;
+    background-color: transparent !important;
+  }
+  
+  .grid-feature-link {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+  }
+  
+  .grid-feature-image {
+    position: relative !important;
+    aspect-ratio: 16 / 10 !important;
+    width: 100% !important;
+    height: auto !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+  
+  .grid-feature-content {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    padding: 1.25rem 0 0 0 !important;
+    color: var(--color-ink) !important;
+    max-width: 100% !important;
+  }
+  
+  .grid-feature-title {
+    color: var(--color-ink) !important;
+    font-size: 1.75rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.15 !important;
+  }
+  
+  .grid-feature-excerpt {
+    color: var(--color-ink-secondary) !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Stack category featured cards vertically on mobile */
+  .cat-featured-card {
+    aspect-ratio: auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    overflow: visible !important;
+    background-color: transparent !important;
+    height: auto !important;
+  }
+  
+  .cat-featured-image {
+    position: relative !important;
+    aspect-ratio: 16 / 10 !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+  
+  .cat-featured-overlay {
+    display: none !important;
+  }
+  
+  .cat-featured-content {
+    position: relative !important;
+    padding: 1.25rem 0 0 0 !important;
+    color: var(--color-ink) !important;
+    max-width: 100% !important;
+  }
+  
+  .cat-featured-title {
+    color: var(--color-ink) !important;
+    font-size: 1.75rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.15 !important;
+  }
+  
+  .cat-featured-excerpt {
+    color: var(--color-ink-secondary) !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .cat-featured-badge {
+    top: 1rem !important;
+    left: 1rem !important;
   }
   
   /* Reduce post hero image crop on mobile viewports */
