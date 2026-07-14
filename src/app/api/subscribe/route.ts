@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const WP_URL = process.env.NEXT_PUBLIC_WORDPRESS_URL || 'http://retrato.local';
+const WP_URL = process.env.NEXT_PUBLIC_WORDPRESS_URL || 'https://retratowp.halonso.digital';
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,11 +14,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Generate confirmation token in Next.js
+    const token = crypto.randomUUID();
+    const origin = request.nextUrl.origin;
+    const magicLink = `${origin}/api/confirm?token=${token}`;
+
     // Proxy to WordPress REST API
     const wpResponse = await fetch(`${WP_URL}/wp-json/retrato/v1/subscribe`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ 
+        name, 
+        email,
+        confirmation_token: token,
+        status: 'pending'
+      }),
     });
 
     const data = await wpResponse.json();
@@ -37,7 +47,11 @@ export async function POST(request: NextRequest) {
     fetch('https://n8n.diabolicalservices.tech/webhook/retrato-subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ 
+        name, 
+        email, 
+        magicLink 
+      }),
     }).catch((err) => console.error('Failed to trigger n8n subscribe:', err));
 
     return NextResponse.json(data);

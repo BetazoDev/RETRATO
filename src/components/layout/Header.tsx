@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { MenuItem, WPImage } from '@/lib/types';
 import { wpUrlToPath } from '@/lib/utils';
 import SearchOverlay from '../shared/SearchOverlay';
@@ -43,7 +44,7 @@ export default function Header({ menuItems, logo, siteTitle, imageUrl }: HeaderP
       return;
     }
 
-    const img = new Image();
+    const img = new window.Image();
     img.crossOrigin = 'anonymous';
     img.src = imageUrl;
 
@@ -123,6 +124,9 @@ export default function Header({ menuItems, logo, siteTitle, imageUrl }: HeaderP
     ? `header header-overlay ${brightness === 'light' ? 'header-text-dark' : 'header-text-light'}`
     : 'header';
 
+  const logoSrc = logo ? logo.sourceUrl : (mounted && theme === 'dark' ? '/logo-dark.png' : '/logo-light.png');
+  const logoAlt = logo?.altText || siteTitle;
+
   return (
     <>
       <header className={headerClass}>
@@ -130,10 +134,13 @@ export default function Header({ menuItems, logo, siteTitle, imageUrl }: HeaderP
           {/* Left: Logo + Nav */}
           <div className="header-left-group">
             <Link href="/" className="header-logo-area">
-              <img
-                src={logo ? logo.sourceUrl : (mounted && theme === 'dark' ? '/logo-dark.png' : '/logo-light.png')}
-                alt={logo?.altText || siteTitle}
+              <Image
+                src={logoSrc}
+                alt={logoAlt}
+                width={170}
+                height={56}
                 className="header-logo-image"
+                priority
               />
             </Link>
 

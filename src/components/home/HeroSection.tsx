@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Post } from '@/lib/types';
 
 interface HeroSectionProps {
@@ -9,24 +10,29 @@ export default function HeroSection({ post }: HeroSectionProps) {
   const imageUrl =
     post.postExtended?.heroImage?.node?.sourceUrl ||
     post.featuredImage?.node?.sourceUrl;
+  const imageAlt =
+    post.postExtended?.heroImage?.node?.altText ||
+    post.featuredImage?.node?.altText ||
+    post.title;
   const category = post.categories?.nodes?.[0];
   const label = post.postExtended?.featuredLabel;
 
   return (
     <section className="hero-sec">
       <div className="hero-container">
-        {/* Large Editorial Image */}
+        {/* Large Editorial Image — LCP element, loaded with priority */}
         {imageUrl && (
-          <div
-            className="hero-image"
-            style={{ backgroundImage: `url(${imageUrl})` }}
-            role="img"
-            aria-label={
-              post.postExtended?.heroImage?.node?.altText ||
-              post.featuredImage?.node?.altText ||
-              post.title
-            }
-          />
+          <div className="hero-image-wrapper">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="hero-image-img"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
+          </div>
         )}
 
         {/* Overlapping Headline */}

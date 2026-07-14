@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Post } from '@/lib/types';
 
 interface PostHeroProps {
@@ -9,17 +10,25 @@ export default function PostHero({ post }: PostHeroProps) {
     post.postExtended?.heroImage?.node?.sourceUrl ||
     post.featuredImage?.node?.sourceUrl ||
     '';
+  const imageAlt =
+    post.postExtended?.heroImage?.node?.altText ||
+    post.featuredImage?.node?.altText ||
+    post.title;
   const featuredLabel = post.postExtended?.featuredLabel || 'Visual Culture';
 
   return (
     <section className="post-hero">
       {imageUrl && (
-        <div
-          className="post-hero-image"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-          role="img"
-          aria-label={post.featuredImage?.node?.altText || post.title}
-        />
+        <div className="post-hero-image-wrapper">
+          <Image
+            src={imageUrl}
+            alt={imageAlt}
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+        </div>
       )}
       <div className="post-hero-overlay" />
       <div className="post-hero-content">

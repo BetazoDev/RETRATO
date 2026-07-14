@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Post } from '@/lib/types';
 import { stripHtml, truncate } from '@/lib/utils';
 
@@ -24,14 +25,18 @@ export default function ArticleCard({ post, showBadge = true, isFeaturedBanner =
             <span className="art-featured-badge">{post.postExtended.featuredLabel}</span>
           )}
           {imageUrl ? (
-            <div
-              className={`grid-vertical-image ${isFeaturedBanner ? 'banner-image' : ''}`}
-              style={{ backgroundImage: `url(${imageUrl})` }}
-              role="img"
-              aria-label={altText}
-            />
+            <div className={`grid-vertical-image-wrapper ${isFeaturedBanner ? 'banner-image-wrapper' : ''}`}>
+              <Image
+                src={imageUrl}
+                alt={altText}
+                fill
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+              />
+            </div>
           ) : (
-            <div className={`grid-vertical-image bg-zinc-200 dark:bg-zinc-800 ${isFeaturedBanner ? 'banner-image' : ''}`} />
+            <div className={`grid-vertical-image-wrapper bg-zinc-200 dark:bg-zinc-800 ${isFeaturedBanner ? 'banner-image-wrapper' : ''}`} />
           )}
         </div>
         

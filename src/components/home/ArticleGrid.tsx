@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Post } from '@/lib/types';
 import { formatDate, stripHtml, truncate } from '@/lib/utils';
 
@@ -20,12 +21,16 @@ export default function ArticleGrid({ posts, excerptLimit = 120 }: ArticleGridPr
           <div className="grid-vertical-card">
             <Link href={`/post/${post1.slug}`} className="grid-card-link">
               {post1.featuredImage?.node && (
-                <div
-                  className="grid-vertical-image"
-                  style={{ backgroundImage: `url(${post1.featuredImage.node.sourceUrl})` }}
-                  role="img"
-                  aria-label={post1.featuredImage.node.altText || post1.title}
-                />
+                <div className="grid-vertical-image-wrapper">
+                  <Image
+                    src={post1.featuredImage.node.sourceUrl}
+                    alt={post1.featuredImage.node.altText || post1.title}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  />
+                </div>
               )}
               <div className="grid-card-content">
                 <span className="grid-category-tag">
@@ -80,12 +85,16 @@ export default function ArticleGrid({ posts, excerptLimit = 120 }: ArticleGridPr
           <div className="grid-vertical-card">
             <Link href={`/post/${post3.slug}`} className="grid-card-link">
               {post3.featuredImage?.node && (
-                <div
-                  className="grid-vertical-image"
-                  style={{ backgroundImage: `url(${post3.featuredImage.node.sourceUrl})` }}
-                  role="img"
-                  aria-label={post3.featuredImage.node.altText || post3.title}
-                />
+                <div className="grid-vertical-image-wrapper">
+                  <Image
+                    src={post3.featuredImage.node.sourceUrl}
+                    alt={post3.featuredImage.node.altText || post3.title}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  />
+                </div>
               )}
               <div className="grid-card-content">
                 <span className="grid-category-tag">
@@ -112,12 +121,18 @@ export default function ArticleGrid({ posts, excerptLimit = 120 }: ArticleGridPr
           <div className="grid-feature-card">
             <Link href={`/post/${post4.slug}`} className="grid-feature-link">
               {post4.featuredImage?.node && (
-                <div
-                  className="grid-feature-image"
-                  style={{
-                    backgroundImage: `linear-gradient(to top, rgba(18,18,18,0.8), transparent), url(${post4.featuredImage.node.sourceUrl})`,
-                  }}
-                />
+                <div className="grid-feature-image-wrapper">
+                  <Image
+                    src={post4.featuredImage.node.sourceUrl}
+                    alt={post4.featuredImage.node.altText || post4.title}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  />
+                  {/* Gradient overlay */}
+                  <div className="grid-feature-gradient" />
+                </div>
               )}
               <div className="grid-feature-content">
                 <span className="grid-feature-badge">

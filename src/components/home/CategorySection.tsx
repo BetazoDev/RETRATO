@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Post } from '@/lib/types';
 import { stripHtml, truncate } from '@/lib/utils';
 import ArticleCard from '../shared/ArticleCard';
@@ -66,11 +67,16 @@ export default function CategorySection({
           {/* Top: 100% width Featured Card */}
           <Link href={`/post/${featuredPost.slug}`} className="cat-featured-card">
             {featuredPost.featuredImage?.node?.sourceUrl && (
-              <img
-                src={featuredPost.featuredImage.node.sourceUrl}
-                alt={featuredPost.featuredImage.node.altText || featuredPost.title}
-                className="cat-featured-image"
-              />
+              <div className="cat-featured-image-wrapper">
+                <Image
+                  src={featuredPost.featuredImage.node.sourceUrl}
+                  alt={featuredPost.featuredImage.node.altText || featuredPost.title}
+                  fill
+                  loading="lazy"
+                  sizes="100vw"
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+              </div>
             )}
             <div className="cat-featured-overlay" />
             <span className="cat-featured-badge">
